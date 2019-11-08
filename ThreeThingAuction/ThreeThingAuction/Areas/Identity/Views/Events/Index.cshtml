@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ThreeThingAuction.Models.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Events</h2>
+
+
+@foreach (var item in Model)
+{
+
+        <div class="card col-sm-4">
+            <h3 class="card-title">
+                @Html.DisplayFor(modelItem => item.Name)
+            </h3>
+            <p class="card-text">
+                Starting Time:
+                @Html.DisplayFor(modelItem => item.Date)<br>
+                Ending Time:
+                @Html.DisplayFor(modelItem => item.EndDate)<br>
+                
+            </p>
+            @if (item.EndDate <= DateTime.Now)
+            {
+                <a class="button" asp-action="Details" asp-route-id="@item.Id">The Event is over</a>
+            }
+            else if (item.Date <= DateTime.Now)
+            {
+                <a class="button" asp-action="Details" asp-route-id="@item.Id">Enter the Auction</a>
+            }
+            else
+            {
+                <a class="button startsoon">The Auction will start soon</a>
+            }
+        </div>
+}

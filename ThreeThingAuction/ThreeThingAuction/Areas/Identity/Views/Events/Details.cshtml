@@ -1,0 +1,68 @@
+﻿@model ThreeThingAuction.Models.Event
+
+@{
+    ViewData["Title"] = "Details";
+}
+@if (Model.EndDate <= DateTime.Now)
+{
+    
+    <a class="button heading" asp-area="Identity" asp-controller="Things" asp-action="Result" asp-route-id="@Model.Name"><h2>@Html.DisplayFor(model => model.Name)</h2></a>
+}
+else if (Model.Date <= DateTime.Now)
+{
+    <a class="button heading" asp-area="Identity" asp-controller="Things" asp-action="Index" asp-route-id="@Model.Name"><h2>@Html.DisplayFor(model => model.Name)</h2></a>
+}
+else
+{
+    <h2>
+        @Html.DisplayFor(model => model.Name)
+    </h2>
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Thing List:
+        </dt>
+        @if (Model.EndDate <= DateTime.Now)
+        {
+            <dd>
+                <a asp-area="Identity" asp-controller="Things" asp-action="Result" asp-route-id="@Model.Name">See the result of the auction</a>
+            </dd>
+        }
+        else if (Model.Date <= DateTime.Now)
+        {
+            <dd>
+                <a asp-area="Identity" asp-controller="Things" asp-action="Index" asp-route-id="@Model.Name">Go to Auction</a>
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Wait for the event to start
+            </dd>
+        }
+        <dt>
+            Starting Time:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            Ending Time:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to Events List</a>
+</div>

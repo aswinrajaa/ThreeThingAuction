@@ -1,0 +1,65 @@
+﻿@model ThreeThingAuction.Models.Team
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Team Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Money Assigned:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Money)
+        </dd>
+        <dt>
+            Number of Team Members:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoOfMembers)
+        </dd>
+        <dt>
+            Team Member 1:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Member1)
+        </dd>
+        <dt>
+            Team Member 2:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Member2)
+        </dd>
+        <dt>
+            Team Member 3:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Member3)
+        </dd>
+        <dt>
+            Team Member 4:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Member4)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Model.Member1 == User.Identity.Name || Model.Member2 == User.Identity.Name || Model.Member3 == User.Identity.Name || Model.Member4 == User.Identity.Name)
+    {
+        <a asp-action="Leave" asp-route-id="@Model.Id">Leave</a>
+    }
+    else
+    {
+        <a asp-action="Index">Back to list</a>
+    }
+</div>

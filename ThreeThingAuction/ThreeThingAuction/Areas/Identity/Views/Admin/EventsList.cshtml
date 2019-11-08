@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ThreeThingAuction.Models.Event>
+
+@{
+    ViewData["Title"] = "EventsList";
+}
+
+<h2>EventsList</h2>
+<p>
+    <a class="button" asp-action="CreateEvents">Create Event</a>
+</p>
+
+@foreach (var item in Model)
+{
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">
+            <a asp-action="ThingList" asp-route-id="@item.Name">@Html.DisplayFor(modelItem => item.Name)</a>
+        </h3>
+        <p class="card-text">
+            Starting Time:
+            @Html.DisplayFor(modelItem => item.Date)<br>
+            Ending Time:
+            @Html.DisplayFor(modelItem => item.EndDate)<br>
+            <a asp-action="EditEvents" asp-route-id="@item.Id">Edit</a>
+        </p>
+    </div>
+</div>
+}
+<div>
+    <a asp-action="Index">Back to My Admin</a>
+</div>

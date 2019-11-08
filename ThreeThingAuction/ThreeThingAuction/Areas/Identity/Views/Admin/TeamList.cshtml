@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ThreeThingAuction.Models.Team>
+
+@{
+    ViewData["Title"] = "TeamList";
+}
+
+<h2>Teams List</h2>
+
+
+@foreach (var item in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">
+                <a asp-action="TeamDetails" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+            </h3>
+            <p class="card-text">
+                Team ID:
+                @Html.DisplayFor(modelItem => item.Id)<br>
+                Money:
+                @Html.DisplayFor(modelItem => item.Money)<br>
+                Number of Team Members:
+                @Html.DisplayFor(modelItem => item.NoOfMembers)<br>
+                Team Members:<br>
+                @if (item.Member1 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Member1)<br>
+                }
+                @if (item.Member2 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Member2)<br>
+                }
+                @if (item.Member3 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Member3)<br>
+                }
+                @if (item.Member4 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Member4)<br>
+                }
+                <a class="button" asp-action="AddMoneyToTeam" asp-route-id="@item.Id">AddMoneyToTeam</a>
+            </p>
+        </div>
+    </div>
+}
+<div>
+    <a asp-action="Index">Back to MyAdmin</a>
+</div>

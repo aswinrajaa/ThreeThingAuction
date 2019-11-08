@@ -1,0 +1,42 @@
+﻿@model ThreeThingAuction.Models.Thing
+
+@{
+    ViewData["Title"] = "ThingDetail";
+}
+
+<h2>ThingDetail</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Thing Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Owned By
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Teamid)
+        </dd>
+        <dt>
+            Bidded For
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BidValue)
+        </dd>
+        <dt>
+            Event Assigned
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EventId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditThings" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="ThingList">Back to List</a>
+</div>

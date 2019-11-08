@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ThreeThingAuction.Models.Thing>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Auction List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item
+            </th>
+            <th>
+                Current Bid
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var last = Model.Last(); }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BidValue)
+                </td>
+                <td>
+                    <a class="button small" asp-action="Edit" asp-route-id="@item.Id">Bid</a>
+                </td>
+            </tr>
+            if (item.Equals(last))
+            {
+            <a asp-area="Identity" asp-controller="Events" asp-action="Details" asp-route-id="@item.EventName">Back to Event</a>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<ThreeThingAuction.Models.Event>
+
+
+@{
+    ViewData["Title"] = "Event";
+}
+
+<h2>Event</h2>
+
+
+
+    <h4>Event</h4>
+
+<table>
+    <thead class="table">
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Id</th>
+            <th>ThingList</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <dt>
+                @Html.DisplayFor(modelItem => item.Name);
+            </dt>
+            <dt>
+                @Html.DisplayFor(modelItem => item.Id);
+            </dt>
+            <dt>
+                @Html.DisplayFor(modelItem => item.ThingList.Name);
+            </dt>
+
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+
+<div> 
+    <a asp-action="Index">Back to List</a> |
+    <a asp-action="Things">View Things</a>
+</div>

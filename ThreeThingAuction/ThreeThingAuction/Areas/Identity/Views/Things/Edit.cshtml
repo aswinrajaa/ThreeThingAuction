@@ -1,0 +1,41 @@
+﻿@model ThreeThingAuction.Models.Thing
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>3 Thing Game</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Thing Name</label>
+                <input asp-for="Name" class="form-control opaque" readonly />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BidValue" class="control-label"></label>
+                <input asp-for="BidValue" class="form-control" />
+                <span asp-validation-for="BidValue" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="EventId" />
+            <input type="hidden" asp-for="EventName" />
+            <div class="form-group">
+                <input type="submit" value="Bid" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+@{var eventidthis = @Model.EventId; }
+<div>
+    <a asp-area="Identity" asp-controller="Things" asp-action="Index" asp-route-id="@eventidthis">Back to Auction</a> |
+    <a asp-area="Identity" asp-controller="Events" asp-action="Details" asp-route-id="@Model.EventName">Back to Event</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

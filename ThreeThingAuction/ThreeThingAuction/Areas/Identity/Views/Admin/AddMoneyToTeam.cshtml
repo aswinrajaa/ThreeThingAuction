@@ -1,0 +1,41 @@
+﻿@model ThreeThingAuction.Models.Team
+
+@{
+    ViewData["Title"] = "AddMoneyToTeam";
+}
+
+<h2>AddMoneyToTeam</h2>
+
+<h4>Team</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMoneyToTeam">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" readonly />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Money" class="control-label"></label>
+                <input asp-for="Money" class="form-control" />
+                <span asp-validation-for="Money" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="NoOfMembers" />
+            <input type="hidden" asp-for="Member1" />
+            <input type="hidden" asp-for="Member2" />
+            <input type="hidden" asp-for="Member3" />
+            <input type="hidden" asp-for="Member4" />
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

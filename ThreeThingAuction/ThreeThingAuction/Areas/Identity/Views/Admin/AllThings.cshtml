@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ThreeThingAuction.Models.ThingList>
+
+@{
+    ViewData["Title"] = "AllThings";
+}
+
+<h2>AllThings</h2>
+
+<p>
+    <a asp-action="CreateThings">Create New Thing</a>
+</p>
+<h2>
+    Things Created:
+</h2>
+<hr/>
+<div class="row">
+@foreach (var item in Model)
+{
+    <div class="col-sm-1">
+        @Html.DisplayFor(modelItem => item.Name)
+    </div>
+}
+</div>    
+<div>
+    <a asp-action="Index">Back to MyAdmin</a>
+</div>
